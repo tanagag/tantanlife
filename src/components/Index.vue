@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-      我是首页
+    <p>{{msg}}</p>
+    <p>{{msg}}</p>
+    <p>{{msg}}</p>
   </div>
 </template>
 
@@ -9,14 +11,15 @@ export default {
   name: 'index',
   data () {
     return {
-      msg: ''
+      msg: '我是首页'
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
   .content{
-    height:1000px
+    background: #eee;
+    height:1000px;
   }
 </style>

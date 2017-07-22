@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="view content">
       {{msg}}
   </div>
 </template>
@@ -15,6 +15,8 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-
+<style coped>
+  .content{
+    
+  }
 </style>

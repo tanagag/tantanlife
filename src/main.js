@@ -1,11 +1,15 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
+import Vue    from 'vue'
+import App    from './App'
 import router from './router'
+import Tips   from './components/plugin'
+import Mixin  from './mixin'
 
 Vue.config.productionTip = false
+Vue.use(Tips)
 
+import '../static/css/animate.css'
 
 router.afterEach((to, from, next) => {
   //定义title

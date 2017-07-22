@@ -1,6 +1,6 @@
 <template>
   <div name="header"  onselectstart="return false">
-    <div class="nav">
+    <div class="nav" ref="nav">
         <div id="navDiv">
             <div class="lo">
               <a href="index.html" class="logo"><img src="static/img/logo.png" /></a>
@@ -12,19 +12,19 @@
             </div>
             <transition name="drop">
               <ul class="clear" v-show="drop">
-                  <router-link :to="{path:'/index'}" tag="li" active-class="active">
+                  <router-link :to="{path:'/index'}" tag="li" @click.native="something" active-class="active">
                     <a href="javascript:void(0)">首页</a>
                   </router-link>
-                   <router-link :to="{path:'/photo'}" tag="li" active-class="active">
+                   <router-link :to="{path:'/photo'}" tag="li" @click.native="something" active-class="active">
                     <a href="javascript:void(0)">相册</a>
                   </router-link>
-                   <router-link :to="{path:'/resume'}" tag="li" active-class="active">
+                   <router-link :to="{path:'/resume'}" tag="li"  @click.native="something" active-class="active">
                     <a href="javascript:void(0)">简历</a>
                   </router-link>
-                   <router-link :to="{path:'/about'}" tag="li" active-class="active">
+                   <router-link :to="{path:'/about'}" tag="li" @click.native="something" active-class="active">
                     <a href="javascript:void(0)">关于我们</a>
                   </router-link>
-                   <router-link :to="{path:'/other'}" tag="li" active-class="active">
+                   <router-link :to="{path:'/other'}" tag="li" @click.native="something" active-class="active">
                     <a href="javascript:void(0)">其他</a>
                   </router-link>
               </ul>
@@ -51,9 +51,28 @@ export default {
     window.onresize = ()=>{
       setTimeout(this.calc(),20)
     }
+    //判断滚轮上下方向(暂时没有用到此功能)
     this.mousewheel();
+    //获取向上滚动距离(头部透明度)
+    window.onscroll=()=>{
+      var scrollTop = this.getScrollTop();
+      
+      if(scrollTop < 65)
+      {
+        this.$refs.nav.style.background = "";
+      }else{
+        if(scrollTop < 200){
+          var rgba = 1-(scrollTop * 0.004);
+          this.$refs.nav.style.background = "rgba(255,255,255,"+(rgba)+")";
+        }
+      }
+    }
   },
   methods:{
+    something:function(){
+     /* this.drop =!this.drop;
+      this.flag = this.drop;*/
+    },
     toggle:function(){
       this.drop =!this.drop;
       this.flag = this.drop;
@@ -70,13 +89,11 @@ export default {
         var direction;
         document.body.addEventListener("DOMMouseScroll", function(event) {
            direction= event.detail && (event.detail > 0 ? "mousedown" : "mouseup");
-           console.log(direction);
         });
         // chrome and ie
         document.body.onmousewheel = function (event) {
            event = event || window.event;
-           direction = event.wheelDelta && (event.wheelDelta > 0 ? "mouseup" : "mousedown");
-           console.log(direction);
+           direction = event.wheelDelta && (event.wheelDelta > 0 ? "mouseup" : "mousedown");      
         };
     }
   }
@@ -218,7 +235,7 @@ export default {
       }
     }
   }
-  .drop-enter-active,.drop-leave-active{transition:all 0.5s ease;}
+  .drop-enter-active,.drop-leave-active{transition:all 0.2s ease;}
   .drop-enter,.drop-leave-to{transform:translate3d(0,-200%,0);opacity: 0}
 
   .fade-enter-active,.fade-leave-active{transition:opacity 0.2s ease;}

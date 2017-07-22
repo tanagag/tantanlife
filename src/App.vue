@@ -1,9 +1,11 @@
 <template>
   <div id="app">
   	<v-header></v-header>
-  	<div class="container">
- 		<router-view></router-view>
-  	</div>
+    <div class="container">
+      <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+  		    <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -16,7 +18,21 @@ export default {
   }
 }
 </script>
-<style type="text/css">
+<style lang="less" type="text/css">
 	@import './less/index.less';
+  .view{
+    position:absolute;
+    left:0;right:0;
+    bottom:auto;
+    top:75px;
+    margin:auto;
+    width:100%;
+    max-width: 1170px;
+  }
+  @media (max-width: @xs) {
+    .view{
+      top:60px;
+    }
+  }
 </style>
 
