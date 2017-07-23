@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-  	<v-header></v-header>
-    <div class="container">
-      <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-  		    <router-view></router-view>
-      </transition>
-    </div>
+  	<!-- <v-header></v-header>
+        <div class="container">
+          <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+          <router-view></router-view>
+          </transition>
+        </div> -->
+        <div class="box direction-column">
+          <v-header style="height:65px;background:red"></v-header>
+          <div class="container" style="overflow-y:scroll">
+            <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+            <router-view></router-view>
+            </transition>
+          </div>
+        </div>
   </div>
 </template>
 
