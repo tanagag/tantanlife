@@ -1,5 +1,5 @@
 <template>
-  <div name="header"  onselectstart="return false">
+  <div name="vheader"  onselectstart="return false">
     <div class="nav" ref="nav">
         <div id="navDiv">
             <div class="lo">
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'header',
+  name: 'vheader',
   data () {
     return {
       drop:false
@@ -68,10 +68,29 @@ export default {
       }
     }
   },
+  beforeCreate: function () {
+      console.log('beforeCreate-child');
+  },
+  beforeMount: function () {
+      console.log('beforeMount-child'); 
+  },
+  mounted: function () {
+      console.log('mounted-child');
+  },
+  beforeUpdate: function () {
+      console.log('beforeUpdate-child');
+  },
+  updated: function () {
+      console.log('updated-child'); 
+  },
+  beforeDestroy: function () {
+      console.log('beforeDestroy-child'); 
+  },
+  destroyed: function () {
+      console.log('destroyed-child');
+  },
   methods:{
     something:function(){
-     /* this.drop =!this.drop;
-      this.flag = this.drop;*/
     },
     toggle:function(){
       this.drop =!this.drop;
@@ -80,9 +99,9 @@ export default {
     calc:function(){
       var w = document.documentElement.clientWidth;
       if(w >= 768){
-        this.drop = true
+        this.drop = true;
       }else{
-        this.drop = this.flag
+        this.drop = this.flag;
       }
     },
     mousewheel:function(e){

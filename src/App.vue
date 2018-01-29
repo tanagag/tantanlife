@@ -1,13 +1,7 @@
 <template>
   <div id="app">
-  	<!-- <v-header></v-header>
-        <div class="container">
-          <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-          <router-view></router-view>
-          </transition>
-        </div> -->
         <div class="box direction-column">
-          <v-header style="height:65px;background:red"></v-header>
+          <v-header style="height:65px;"></v-header>
           <div class="container" style="overflow-y:scroll">
             <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
             <router-view></router-view>
@@ -23,7 +17,31 @@ export default {
   name: 'app',
   components:{
   	VHeader
-  }
+  },
+  beforeCreate: function () {
+      console.log('beforeCreate-parent');
+  },
+  created: function () {
+      console.log('created-parent');
+  },
+  beforeMount: function () {
+      console.log('beforeMount-parent'); 
+  },
+  mounted: function () {
+      console.log('mounted-parent');
+  },
+  beforeUpdate: function () {
+      console.log('beforeUpdate-parent');
+  },
+  updated: function () {
+      console.log('updated-parent'); 
+  },
+  beforeDestroy: function () {
+      console.log('beforeDestroy-parent'); 
+  },
+  destroyed: function () {
+      console.log('destroyed-parent');
+  },
 }
 </script>
 <style lang="less" type="text/css">

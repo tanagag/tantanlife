@@ -9,12 +9,13 @@ import Other from '@/components/Other'
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/index',
       name: 'index',
       title:'首页',
-      component: Index
+      component: resolve => require(['@/components/Index'], resolve)
     },{
       path: '/photo',
       name: 'photo',

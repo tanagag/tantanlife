@@ -30,3 +30,11 @@
 @xs:768px;
 @sm:992px;
 @md:1200px;
+
+.bg-color(@color:red){
+	background: @color;
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+      background:yellow;
+    }
+}
+  
